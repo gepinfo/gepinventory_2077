@@ -1,0 +1,188 @@
+---
+openapi: 3.0.0
+info:
+   version: 1.3.0
+   title: gepinventory open api specification
+   description: gpinventoryfeature API
+   termsOfService: http://api_url/terms/
+   contact:
+      name: ContactName
+      email: hello@wolox.co
+      url: https://www.wolox.com.ar/
+   license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+   - url: http://localhost:8011
+     description: gpinventoryfeature
+tags:
+- name: item
+  description: inventory item
+paths:
+   "/item/{id}":
+      delete:
+         tags:
+         -  item
+         description: GpDelete
+         parameters:
+         -  in: "path"
+            description: GpDelete
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  item
+         description: GpGetNounById
+         parameters:
+         -  in: "path"
+            description: GpGetNounById
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/item":
+      put:
+         tags:
+         -  item
+         description: GpUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/item"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  item
+         description: GpGetAllValues
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      post:
+         tags:
+         -  item
+         description: GpCreate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/item"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/item/userid/created_by":
+      get:
+         tags:
+         -  item
+         description: GpGetNounCreatedBy
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+components:
+   schemas:
+      item:
+         type: object
+         properties:
+            item-uuid:
+               type: "string"
+               description: Description
+            type:
+               type: "string"
+               description: this needs to be enum
+            name:
+               type: "string"
+               description: Description
+            description:
+               type: "string"
+               description: Description
+            attachments:
+               type: "string"
+               description: Description
+            price:
+               type: "number"
+               description: Description
+            price-currency-type:
+               type: "string"
+               description: Description
+            cost:
+               type: "number"
+               description: Description
+            cost-currency-type:
+               type: "number"
+               description: Description
+            tags:
+               type: "string"
+               description: will use items tags manager
+            ismatrix:
+               type: "boolean"
+               description: Description
+            matrix-id:
+               type: "string"
+               description: Description
+            warehouse:
+               type: "string"
+               description: Description
+            warehouse-loc:
+               type: "string"
+               description: location is a reserved word
+            manufacturer:
+               type: "string"
+               description: Description
+            manufacture-country:
+               type: "string"
+               description: Description
+            lot-or-batch-num:
+               type: "string"
+               description: number is a reserved word
+            external-reference-one:
+               type: "string"
+               description: Description
+            gephistoryid:
+               type: "string"
+               description: Description
