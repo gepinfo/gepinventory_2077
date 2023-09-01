@@ -87,19 +87,20 @@ export class SigninDao {
 
     public logindao(logindetails, callback) {
         new CustomLogger().showLogger('info', 'Enter into SigninDao.ts: logindao');
-        signinmodel.findOneAndUpdate({ email: logindetails.email, password: logindetails.password }, { $set: { loggedinDate: new Date() } }, function (err, response) {
-            if (err) {
-                callback(err);
-            }
-            if (response === null) {
-                response = 'Incorrect Username or Password';
-                new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: logindao');
-                callback(response);
-
-            } else {
-                new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: logindao');
-                callback(response);
-
+        signinmodel.findOneAndUpdate({ email: logindetails.email, password: logindetails.password }, { $set: { loggedinDate: new Date() } }).then((response:any) => {
+            try {
+                if (response === null) {
+                    response = 'Incorrect Username or Password';
+                    new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: logindao');
+                    callback(response);
+    
+                } else {
+                    new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: logindao');
+                    callback(response);
+    
+                }
+            } catch (error) {
+                callback(error);
             }
         })
     }
@@ -107,12 +108,13 @@ export class SigninDao {
     public logoutdao(userid, callback) {
         new CustomLogger().showLogger('info', 'Enter into SigninDao.ts: logoutdao');
 
-        signinmodel.findByIdAndUpdate(userid, { $set: { loggedoutDate: new Date() } }, function (err, result) {
-            if (err) {
-                callback(err);
+        signinmodel.findByIdAndUpdate(userid, { $set: { loggedoutDate: new Date() } }).then((result) => {
+            try {
+                new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: logoutdao');
+                callback(result);
+            } catch (error) {
+                callback(error)
             }
-            new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: logoutdao');
-            callback(result);
 
         })
     }
@@ -155,14 +157,14 @@ export class SigninDao {
                 let idtoken = jwt.sign(payload, 'geppettosecret', {
                     expiresIn: 86400
                 });
-                signinmodel.findByIdAndUpdate(result._id, { $set: { Idtoken: idtoken } }, function (err, response) {
-                    if (err) {
-                        callback(err);
+                signinmodel.findByIdAndUpdate(result._id, { $set: { Idtoken: idtoken } }).then((response) => {
+                    try {
+                        response.Idtoken = idtoken;
+                        new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: googledao');
+                        callback(response);
+                    } catch (error) {
+                        callback(error)
                     }
-                    response.Idtoken = idtoken;
-                    new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: googledao');
-                    callback(response);
-
                 });
             });
 
@@ -276,23 +278,24 @@ export class SigninDao {
             expiresIn: 86400
         });*/
 
-        signinmodel.findByIdAndUpdate(updateuser.id, { $set: { username: updateuser.username, firstname: updateuser.firstname, lastname: updateuser.lastname, email: updateuser.email, role:this.data ,Idtoken:null} }, (err, response) => {
-            if (err) {
-                callback(err);
+        signinmodel.findByIdAndUpdate(updateuser.id, { $set: { username: updateuser.username, firstname: updateuser.firstname, lastname: updateuser.lastname, email: updateuser.email, role:this.data ,Idtoken:null} }).then((response) => {
+            try {
+                let updaterespone = {
+                    username: updateuser.email,
+                    firstname: updateuser.firstname,
+                    lastname: updateuser.lastname,
+                    email: updateuser.email,
+                    id: updateuser.id,
+                    role:this.data,
+                    image:updateuser.image,
+                    idtoken: this.Idtoken
+                }
+                new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: updateuserdao');
+                callback(updaterespone);
+            } catch (error) {
+                callback(error);
             }
-            let updaterespone = {
-                username: updateuser.email,
-                firstname: updateuser.firstname,
-                lastname: updateuser.lastname,
-                email: updateuser.email,
-                id: updateuser.id,
-                role:this.data,
-                image:updateuser.image,
-                idtoken: this.Idtoken
-            }
-            new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: updateuserdao');
-            callback(updaterespone);
-            });
+        });
         })
     }
     public deleteuserdao(userdetails, callback) {
@@ -306,12 +309,13 @@ export class SigninDao {
     }
     public updateUserdao(updateuser, callback) {
         new CustomLogger().showLogger('info', 'Enter into SigninDao.ts: updateuserdao');
-        signinmodel.findByIdAndUpdate(updateuser.id, { $set: { avatar: updateuser.avatar }},{multi:true},(err, response) => {
-            if (err) {
-                callback(err);
+        signinmodel.findByIdAndUpdate(updateuser.id, { $set: { avatar: updateuser.avatar }},{multi:true}).then((response) => {
+            try {
+                new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: updateuserdao');
+                callback(response);
+            } catch (error) {
+                callback(error)
             }
-            new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: updateuserdao');
-            callback(response);
 
         })
     }

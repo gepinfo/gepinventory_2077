@@ -11,7 +11,7 @@ export class SeedService {
     public create(): void {
         roletypes.forEach(roles => {
             roletypemodel.findOneAndUpdate({ role: roles['role'] },
-                roles, { new: true }, (err, data) => {
+                roles, { new: true }).then((data) => {
                     if (data === null) {
                         let roletype = new roletypemodel(roles);
                         roletype.save();

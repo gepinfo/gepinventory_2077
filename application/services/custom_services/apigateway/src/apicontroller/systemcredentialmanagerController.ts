@@ -15,7 +15,8 @@ export class systemcredentialmanagerController implements Controller {
     private initializeRoutes() {
         this.router.post('/scm', this.GpCreate);
 this.router.get('/scm', this.GpGetAllValues);
-this.router.delete('/scm', this.GpDelete);
+this.router.delete('/scm/:vaultname', this.GpDelete);
+this.router.get('/scm/list', this.GpVaultGetallPath);
 this.router.put('/scm/update', this.GpUpdate);
 this.router.get('/scm/search', this.GpSearch);
 this.router.get('/scmbyname', this.GpGetVaultByName);
@@ -26,6 +27,7 @@ this.router.put('/scm/external/update', this.GpExternalUpdate);
         //#@gepdelimeterone@#
         //#@ssofacebookapiroute@#
         //#@ssogithubapiroute@#
+        //#@gepbankingapiroute@#
     }
 
 public GpCreate(req: Request, res: Response) {
@@ -54,6 +56,16 @@ public GpDelete(req: Request, res: Response) {
         .then((res: any) => res.response.json()).then(result => {
             switch(req.baseUrl) { case '/mobile': res.send(result); break; case '/web': res.send(result); break; default: res.send(null); }
             new CustomLogger().showLogger('info', 'Exit from systemcredentialmanagerController.ts: GpDelete');
+        }).catch(err => {
+            res.send(err);
+        });
+    }
+public GpVaultGetallPath(req: Request, res: Response) {
+            new CustomLogger().showLogger('info', 'Enter into systemcredentialmanagerController.ts: GpVaultGetallPath');
+        new ApiAdapter().get(Constant.SYSTEMCREDENTIALMANAGERURL + `${req.url}` )
+        .then((res: any) => res.response.json()).then(result => {
+            switch(req.baseUrl) { case '/mobile': res.send(result); break; case '/web': res.send(result); break; default: res.send(null); }
+            new CustomLogger().showLogger('info', 'Exit from systemcredentialmanagerController.ts: GpVaultGetallPath');
         }).catch(err => {
             res.send(err);
         });
@@ -134,6 +146,8 @@ public GpExternalUpdate(req: Request, res: Response) {
     //#@apifacebooklogin@#
 
     //#@apigithublogin@#
+
+    //#@gepbankinglogin@#
 
 
 

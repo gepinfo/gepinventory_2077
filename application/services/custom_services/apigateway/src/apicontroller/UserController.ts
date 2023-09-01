@@ -17,6 +17,7 @@ export class UserController implements Controller {
         //#@gepdelimeterone@#
         //#@ssofacebookapiroute@#
         //#@ssogithubapiroute@#
+        //#@gepbankingapiroute@#
     }
 
 public GpSEF(req: Request, res: Response) {
@@ -35,6 +36,8 @@ public GpSEF(req: Request, res: Response) {
     //#@apifacebooklogin@#
 
     //#@apigithublogin@#
+
+    //#@gepbankinglogin@#
 
 
 

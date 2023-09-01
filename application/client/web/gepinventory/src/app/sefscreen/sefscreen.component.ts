@@ -14,10 +14,10 @@ import faker from 'faker';
 
 export class SefscreenComponent implements OnInit {
         public User = {
-            created_date_at: '',
+            created_date: '',
             created_by: '',
             last_modified_by: '',
-            last_modified_date_at: '',
+            last_modified_date: '',
             firstname: '',
             lastname: '',
             username: '',

@@ -13,10 +13,10 @@ import { FormArray, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 export class AuthorizationComponent implements OnInit {
     frameworkComponents: { buttonRenderer: any; };
     public resources: any = {
-        created_date_at: '',
+        created_date: '',
         created_by: '',
         last_modified_by: '',
-        last_modified_date_at: '',
+        last_modified_date: '',
         resource_name: '',
         roles: [],
         components: [],

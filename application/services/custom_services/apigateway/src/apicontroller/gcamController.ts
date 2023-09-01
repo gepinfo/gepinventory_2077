@@ -22,6 +22,7 @@ this.router.put('/gcamupdate', this.gcamupdatebyId);
         //#@gepdelimeterone@#
         //#@ssofacebookapiroute@#
         //#@ssogithubapiroute@#
+        //#@gepbankingapiroute@#
     }
 
 public gcam(req: Request, res: Response) {
@@ -90,6 +91,8 @@ public gcamupdatebyId(req: Request, res: Response) {
     //#@apifacebooklogin@#
 
     //#@apigithublogin@#
+
+    //#@gepbankinglogin@#
 
 
 

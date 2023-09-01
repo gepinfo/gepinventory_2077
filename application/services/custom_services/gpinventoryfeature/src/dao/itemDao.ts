@@ -40,7 +40,7 @@ public async GpUpdate(itemData, callback){
     
     
     
-    itemData.last_modified_date_at = new Date(),
+    itemData.last_modified_date = new Date(),
                                                    this.item.findOneAndUpdate({ _id: itemData._id }, itemData).then((result)	=>
      
              	{
@@ -49,7 +49,7 @@ public async GpUpdate(itemData, callback){
 
          let newresult = result.toObject();  
                                                      delete newresult._id;
-                                                     result.last_modified_date_at = "";
+                                                     result.last_modified_date = "";
                                                     let temp = new itemModel(newresult);
                                                     temp.save();
 
@@ -58,28 +58,16 @@ public async GpUpdate(itemData, callback){
 }).catch((error)=>{
 callback(error);
 });}
-public async GpGetNounById(itemId, callback){
+public async (){
     
-    new CustomLogger().showLogger('info', 'Enter into itemDao.ts: GpGetNounById');
+    new CustomLogger().showLogger('info', 'Enter into itemDao.ts: ');
 
     
 
     
     
     
-    this.item.aggregate(([{"gephistoryid":itemId}, { "$sort": { "last_modified_date_at": -1 }}, { $limit : 1 }])).then((result)	=>
-     
-             	{
-
-        new CustomLogger().showLogger('info', 'Exit from itemDao.ts: GpGetNounById');
-
-        
-
-        
-                callback(result);
-}).catch((error)=>{
-callback(error);
-});}
+    }
 public async GpGetAllValues(callback){
     
     new CustomLogger().showLogger('info', 'Enter into itemDao.ts: GpGetAllValues');
@@ -90,7 +78,7 @@ public async GpGetAllValues(callback){
     
     
     this.item.aggregate(([
-                        { "$sort": { "last_modified_date_at": 1 } },{ "$group": { "_id": "$gephistoryid",  "item": { "$last": "$$ROOT" }  }}    
+                        { "$sort": { "last_modified_date": 1 } },{ "$group": { "_id": "$gephistoryid",  "item": { "$last": "$$ROOT" }  }}    
                     ])).then((result)	=>
      
              	{
@@ -111,7 +99,7 @@ public async GpCreate(itemData, callback){
     new CustomLogger().showLogger('info', 'Enter into itemDao.ts: GpCreate');
 
     let gepCallGuid = `${generate(dictionary.numbers, 50)}`;
-                    ticketsData.gephistoryid = gepCallGuid;
+                    itemData.gephistoryid = gepCallGuid;
                     let temp = new itemModel(itemData);
 
     

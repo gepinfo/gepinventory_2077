@@ -30,7 +30,9 @@
               "src/assets"
             ],
             "styles": [
-"node_modules/ngx-toastr/toastr.css", 
+"
+"node_modules/ng-zorro-antd/src/ng-zorro-antd.min.css", 
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "scripts": []

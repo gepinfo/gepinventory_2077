@@ -41,8 +41,11 @@ class App {
 
     private DBSetup(): void {
         // mongoose.Promise = global.Promise;
-        mongoose.connect(this.DB_Url, { useNewUrlParser: true, useUnifiedTopology: true })
-            .then(res => { console.log('mongodb connected') })
+        mongoose.connect(this.DB_Url)
+            .then(res => { 
+                console.log('mongodb connected');
+                
+            })
             .catch(err => { console.log('mongo error in connection:', err) });
     }
 

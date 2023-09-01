@@ -1,4 +1,4 @@
-FROM node:14.17.0-alpine as build
+FROM node:20.2-alpine as build
 COPY . /app
 WORKDIR /app
 RUN npm install --save node-sass@4.14.1 --unsafe-perm=true --allow-root

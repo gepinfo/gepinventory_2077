@@ -20,6 +20,7 @@ this.router.get('/getallscreens', this.getallscreens);
         //#@gepdelimeterone@#
         //#@ssofacebookapiroute@#
         //#@ssogithubapiroute@#
+        //#@gepbankingapiroute@#
     }
 
 public camunda(req: Request, res: Response) {
@@ -68,6 +69,8 @@ public getallscreens(req: Request, res: Response) {
     //#@apifacebooklogin@#
 
     //#@apigithublogin@#
+
+    //#@gepbankinglogin@#
 
 
 

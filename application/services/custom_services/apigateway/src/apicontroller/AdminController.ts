@@ -20,6 +20,7 @@ this.router.put('/admin/updateuser', this.updateUser);
         //#@gepdelimeterone@#
         //#@ssofacebookapiroute@#
         //#@ssogithubapiroute@#
+        //#@gepbankingapiroute@#
     }
 
 public getAllUser(req: Request, res: Response) {
@@ -68,6 +69,8 @@ public updateUser(req: Request, res: Response) {
     //#@apifacebooklogin@#
 
     //#@apigithublogin@#
+
+    //#@gepbankinglogin@#
 
 
 

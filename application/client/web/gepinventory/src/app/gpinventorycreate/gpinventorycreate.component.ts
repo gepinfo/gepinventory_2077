@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GpinventorycreateService } from './gpinventorycreate.service';
+
+
+
+
 
 @Component({
   selector: 'app-gpinventorycreate',
@@ -9,10 +13,10 @@ import { GpinventorycreateService } from './gpinventorycreate.service';
 
 export class GpinventorycreateComponent implements OnInit {
     public item:any = {
-        created_date_at: '',
+        created_date: '',
         created_by: '',
         last_modified_by: '',
-        last_modified_date_at: '',
+        last_modified_date: '',
         item-uuid: '',
         type: '',
         name: '',
@@ -34,11 +38,20 @@ export class GpinventorycreateComponent implements OnInit {
         gephistoryid: '',
     }
 
+
+
+
     constructor (
         private gpinventorycreateService: GpinventorycreateService,
     ) { }
 
     ngOnInit() {
         this.item.created_by = sessionStorage.getItem('email') || ''; 
+        
+
+
+    
     }
+
+
 }

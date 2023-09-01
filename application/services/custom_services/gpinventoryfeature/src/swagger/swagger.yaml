@@ -40,26 +40,6 @@ paths:
                description: Not Found
             500:
                description: Internal Server Error
-      get:
-         tags:
-         -  item
-         description: GpGetNounById
-         parameters:
-         -  in: "path"
-            description: GpGetNounById
-            name: id
-            required: true
-            schema:
-               type: "string"
-         responses:
-            200:
-               description: Success
-            400:
-               description: Bad Request
-            404:
-               description: Not Found
-            500:
-               description: Internal Server Error
    "/item":
       put:
          tags:
@@ -101,6 +81,21 @@ paths:
                application/json:
                   schema:
                      $ref: "#/components/schemas/item"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+         tags:
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/"
          responses:
             200:
                description: Success

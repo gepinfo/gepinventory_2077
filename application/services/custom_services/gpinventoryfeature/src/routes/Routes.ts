@@ -13,7 +13,7 @@ export class Routes {
         })
         app.route('/item/:id').delete(this.item.GpDelete);
 app.route('/item').put(this.item.GpUpdate);
-app.route('/item/:id').get(this.item.GpGetNounById);
+app.route('').(this..);
 app.route('/item').get(this.item.GpGetAllValues);
 app.route('/item').post(this.item.GpCreate);
 app.route('/item/userid/created_by').get(this.item.GpGetNounCreatedBy);

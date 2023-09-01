@@ -14,10 +14,10 @@ export class UpdateauthorizationComponent implements OnInit {
   frameworkComponents: { buttonRenderer: any; };
     public resources: any = {
       _id: '',
-      created_date_at: '',
+      created_date: '',
       created_by: '',
       last_modified_by: '',
-      last_modified_date_at: '',
+      last_modified_date: '',
       resource_name: '',
       roles: [],
       components: [],
@@ -95,7 +95,7 @@ export class UpdateauthorizationComponent implements OnInit {
           // this.GpGetAllValues();
           this.activatedRoute.queryParams.subscribe((params:any) => { 
               this.queryId = params.id;
-              this.GpGetNounById();
+              this.GpGetEntityById();
           });
     }
 
@@ -139,9 +139,9 @@ export class UpdateauthorizationComponent implements OnInit {
     }
 
 
-    GpGetNounById() {
+    GpGetEntityById() {
         console.log('data come from gpid', this.queryId);
-        this.authorizationService.GpGetNounById(this.queryId).subscribe((data:any) => {
+        this.authorizationService.GpGetEntityById(this.queryId).subscribe((data:any) => {
             this.resources._id = data._id;
             this.resources.resource_name = data.resource_name;
             this.selected = data.roles;

@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mongo:
-    image: geppettotest/mongo-local:sept2021
+    image: mongo:6.0.5
     container_name: mongo-2077
     restart: unless-stopped
     environment:
@@ -12,7 +12,7 @@ services:
     ports:
       - "27018:27017"
     healthcheck:
-      test: echo 'db.runCommand({serverStatus:1}).ok' | mongo admin -u root -p root --quiet | grep 1
+      test: ["CMD","mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
       timeout: 10s
       retries: 5
@@ -27,7 +27,7 @@ services:
     mem_reservation: 150m
     cpus: 0.2
   vault:
-    image: vault:latest
+    image: vault:1.13.3
     container_name: vault-2077
     ports:
       - "8200:8200"

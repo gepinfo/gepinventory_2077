@@ -30,6 +30,7 @@ this.router.delete('/deleteuser/:id', this.deleteUser);
         //#@gepdelimeterone@#
         //#@ssofacebookapiroute@#
         //#@ssogithubapiroute@#
+        //#@gepbankingapiroute@#
     }
 
 public signup(req: Request, res: Response) {
@@ -148,6 +149,8 @@ public deleteUser(req: Request, res: Response) {
     //#@apifacebooklogin@#
 
     //#@apigithublogin@#
+
+    //#@gepbankinglogin@#
 
 
 

@@ -16,6 +16,7 @@ class App {
     public routePrv: Routes = new Routes();
     public logger: WinstonLogger = new WinstonLogger();
     public DB_Url: string;
+    public DB_Domain: string = process.env.MONGO_DOMAIN;
 
     constructor() { 
         this.DatabaseCredentials();
@@ -42,7 +43,9 @@ class App {
         let SCMconfig = new SCMService();
         SCMconfig.SCMData( async result => {
             this.DB_Url = result.data.DB_URL_gepinventory_2077;
-
+            let db_auth = result.data.DB_AUTH_gepinventory_2077;
+            let db_coll = result.data.DB_COLL_gepinventory_2077;
+            this.DB_Url = db_auth+this.DB_Domain+db_coll;
             this.DBSetup();
         });
     }

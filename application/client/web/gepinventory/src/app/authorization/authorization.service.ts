@@ -23,7 +23,7 @@ export class AuthorizationService {
         return this.http.get(this.sharedService.WEB_API + '/gcamallscreens');
     }
 
-    GpGetNounById(tagsId:any): Observable<any> {
+    GpGetEntityById(tagsId:any): Observable<any> {
         return this.http.get(this.sharedService.WEB_API + '/gcambyid/' + tagsId);
     }
 

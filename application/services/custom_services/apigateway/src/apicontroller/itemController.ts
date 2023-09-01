@@ -15,13 +15,14 @@ export class itemController implements Controller {
     private initializeRoutes() {
         this.router.delete('/item/:id', this.GpDelete);
 this.router.put('/item', this.GpUpdate);
-this.router.get('/item/:id', this.GpGetNounById);
+this.router.('', this.);
 this.router.get('/item', this.GpGetAllValues);
 this.router.post('/item', this.GpCreate);
 this.router.get('/item/userid/created_by', this.GpGetNounCreatedBy);
         //#@gepdelimeterone@#
         //#@ssofacebookapiroute@#
         //#@ssogithubapiroute@#
+        //#@gepbankingapiroute@#
     }
 
 public GpDelete(req: Request, res: Response) {
@@ -44,12 +45,12 @@ public GpUpdate(req: Request, res: Response) {
             res.send(err);
         });
     }
-public GpGetNounById(req: Request, res: Response) {
-            new CustomLogger().showLogger('info', 'Enter into itemController.ts: GpGetNounById');
-        new ApiAdapter().get(Constant.GPINVENTORYFEATUREURL + `${req.url}` )
+public (req: Request, res: Response) {
+            new CustomLogger().showLogger('info', 'Enter into itemController.ts: ');
+        new ApiAdapter().(Constant.GPINVENTORYFEATUREURL + `` )
         .then((res: any) => res.response.json()).then(result => {
             switch(req.baseUrl) { case '/mobile': res.send(result); break; case '/web': res.send(result); break; default: res.send(null); }
-            new CustomLogger().showLogger('info', 'Exit from itemController.ts: GpGetNounById');
+            new CustomLogger().showLogger('info', 'Exit from itemController.ts: ');
         }).catch(err => {
             res.send(err);
         });
@@ -90,6 +91,8 @@ public GpGetNounCreatedBy(req: Request, res: Response) {
     //#@apifacebooklogin@#
 
     //#@apigithublogin@#
+
+    //#@gepbankinglogin@#
 
 
 

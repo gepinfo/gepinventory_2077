@@ -1,4 +1,4 @@
-FROM node:14.11.0-alpine
+FROM node:20.2-alpine
 COPY . /gpinventoryfeature
 WORKDIR /gpinventoryfeature
 RUN npm install

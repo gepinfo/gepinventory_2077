@@ -26,12 +26,12 @@ public  GpUpdate(req: Request, callback){
          });
     }
     
-public  GpGetNounById(req: Request, callback){
-    new CustomLogger().showLogger('info', 'Enter into itemService.ts: GpGetNounById')
-     let  itemId = req.params.id;
-     item.GpGetNounById(itemId,(response)=>{
-             new CustomLogger().showLogger('info', 'Exit from itemService.ts: GpGetNounById')
-         callback(response);
+public  (req: Request, callback){
+    new CustomLogger().showLogger('info', 'Enter into itemService.ts: ')
+     
+     item.(()=>{
+             new CustomLogger().showLogger('info', 'Exit from itemService.ts: ')
+         callback();
          });
     }
     

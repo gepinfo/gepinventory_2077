@@ -17,6 +17,7 @@ export class AuthproxyController implements Controller {
         //#@gepdelimeterone@#
         //#@ssofacebookapiroute@#
         //#@ssogithubapiroute@#
+        //#@gepbankingapiroute@#
     }
 
 public user(req: Request, res: Response) {
@@ -35,6 +36,8 @@ public user(req: Request, res: Response) {
     //#@apifacebooklogin@#
 
     //#@apigithublogin@#
+
+    //#@gepbankinglogin@#
 
 
 
