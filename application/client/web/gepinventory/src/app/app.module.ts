@@ -1,7 +1,3 @@
-                import * as AllIcons from '@ant-design/icons-angular/icons';
-                import { IconDefinition } from '@ant-design/icons-angular';
-                import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
-                import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { VaultadminModule } from './vaultadmin/vaultadmin.module';
 import { UserModule } from './user/user.module';
 import { ManagecontrolModule } from './managecontrol/managecontrol.module';
@@ -11,6 +7,10 @@ import { AuthorizationModule } from './authorization/authorization.module';
 import { HomeModule } from './home/home.module';
 import { SignupModule } from './signup/signup.module';
 import { LoginModule } from './login/login.module';
+                import * as AllIcons from '@ant-design/icons-angular/icons';
+                import { IconDefinition } from '@ant-design/icons-angular';
+                import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+                import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { SefscreenModule } from './sefscreen/sefscreen.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,7 +32,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 
 @NgModule({
   declarations: [
-            AppComponent
+                        AppComponent
 ],
   imports: [
 VaultadminModule,
@@ -42,6 +42,8 @@ AuthorizationModule,
 HomeModule,
 SignupModule,
 LoginModule,
+ManageusersModule,
+ManageusersModule,
   SefscreenModule,
 FormsModule,
 HttpClientModule,
@@ -57,10 +59,12 @@ TranslatorModule,
 AppRoutingModule,
 BrowserAnimationsModule,
       BrowserModule,
-  AdminModule
+        AdminModule
 ],
   providers: [
-        	SharedService
+              	SharedService,
+                { provide: NZ_I18N useValue: en_US },
+                { provide: NZ_I18N useValue: en_US }
 
               ,{ provide: NZ_ICONS, useValue: icons },
               { provide: NZ_I18N, useValue: en_US }

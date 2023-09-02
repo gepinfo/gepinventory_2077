@@ -33,6 +33,7 @@ const routes: Routes = [
 { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
 
 { path : 'gpinventorycreate', loadChildren: () => import('./gpinventorycreate/gpinventorycreate.module').then(m => m.GpinventorycreateModule), canActivate: [AuthGuard] } , 
+{ path : 'createitem', loadChildren: () => import('./createitem/createitem.module').then(m => m.CreateitemModule), canActivate: [AuthGuard] } , 
 ];
 
 @NgModule({

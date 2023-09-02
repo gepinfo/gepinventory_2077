@@ -225,7 +225,7 @@ services:
     image: systementry-2077
     container_name: systementry-2077
     ports: 
-      - 8010:8010
+      - 8016:8016
     env_file: .env
     depends_on:
       - mongo
@@ -244,7 +244,7 @@ services:
     image: gpinventoryfeature-2077
     container_name: gpinventoryfeature-2077
     ports: 
-      - 8011:8011
+      - 8017:8017
     env_file: .env
     depends_on:
       - mongo
